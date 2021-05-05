@@ -47,3 +47,7 @@
   list-style: none;
   flex: 0 0 33.333333%;
 }
+
+.stock-box:hover {
+  background-color: blueviolet;
+}

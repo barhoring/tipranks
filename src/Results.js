@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import StockBox from "./StockBox";
 
-const api_uri = `https://trautocomplete.azurewebsites.net/api/Autocomplete/GetAutocomplete?name=M`;
+const api_uri = `https://trautocomplete.azurewebsites.net/api/Autocomplete/GetAutocomplete`;
 
-const StockList = () => {
+const StockList = ({ flag, value }) => {
   const [hasError, setErrors] = useState(false);
   const [stocks, setStocks] = useState({});
 
   useEffect(() => {
-    fetch(api_uri)
+    debugger;
+    fetch(`${api_uri}?name=${value}`)
             .then((res) => res.json())
             .then((res) => setStocks(res))
             .catch((err) => setErrors(err));
-  }, []);
+  }, [flag]);
 
   const stocksArray = Object.values(stocks); 
   return (
