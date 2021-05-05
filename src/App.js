@@ -9,20 +9,10 @@ function App() {
 
 
   const activateSearch = () => {
-    debugger;
     setFlag(!flag)
   }
 
-  // const throuthling = () => {
-  //   console.log("value:", value);
-  //   setIntr(setInterval(function(){ console.log("value", value) }, 700));
-  // }
-  
-  // const stopThrouthling = () => {
-  //   clearInterval(intr);
-  // }
-
-  return (
+ return (
     <div className="App">
       <InputQuery {...{ value, setValue, activateSearch} } />
       <Results {...{ flag, value }} />

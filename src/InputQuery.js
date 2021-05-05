@@ -2,19 +2,20 @@ import { useState } from 'react';
 
 const InputQuery = ({ value, setValue, activateSearch, }) => {
 
-  const [intr, setIntr] = useState({});
+  const [intr, setIntr] = useState(false);
 
   const throuthling = () => {
-    console.log("value:", value);
-    setIntr(setInterval(function(){ activateSearch() }, 1500));
-    // setIntr(setInterval(function(){ console.log("value", value) }, 700));
+      setIntr(setInterval(function(){ activateSearch(); console.log("value:", value); }, 3000));
+  }
+
+  const stopThrouthling = () => {
+    clearInterval(intr);
+    setIntr(false);
   }
   
   return (
     <div>
-      {/* <input onBlur={() => stopThrouthling() } onFocus={() => throuthling()} type="text" id="ticker_name" name="ticker_name" value={value} onChange={e => setValue(e.target.value) } */}
-      <input type="text" id="ticker_name" name="ticker_name" value={value} onChange={e => { setValue(e.target.value); throuthling() } }
-       />
+      <input type="text" id="ticker_name" name="ticker_name" value={value} onChange={e => { setValue(e.target.value); throuthling() }} onBlur={() => stopThrouthling() }  />
       <button type="button" onClick={activateSearch}>Search</button> 
     </div>
   );
