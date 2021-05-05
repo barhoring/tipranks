@@ -9,7 +9,6 @@ const StockList = ({ flag, value }) => {
   const [stocks, setStocks] = useState({});
 
   useEffect(() => {
-    debugger;
     fetch(`${api_uri}?name=${value}`)
             .then((res) => res.json())
             .then((res) => setStocks(res))
